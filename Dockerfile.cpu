@@ -65,6 +65,12 @@ RUN if [ -f "${INTEL_OPENVINO_DIR}"/bin/setupvars.sh ]; then \
         printf "\nsource \${INTEL_OPENVINO_DIR}/bin/setupvars.sh\n" >> /root/.bashrc; \
     fi;
 RUN find "${INTEL_OPENVINO_DIR}/" -name "*.*sh" -type f -exec dos2unix {} \;
+
+
+# Install gtk canberra
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends libcanberra-gtk*
+
 USER openvino
 WORKDIR ${INTEL_OPENVINO_DIR}
 
