@@ -51,6 +51,8 @@ One can quit the demo by pressing `q`.
 | road-segmentation-adas-0001     |   32 ms       |  36.2 ms   |  37.0 ms    |
 | deeplabv3_mnv2_pascal_train_aug |    ---      |  60 ms    | 60 ms  |
 
+See the [video.mp4](img/2020-07-02 15-23-06.mp4) with demonstration of working DeepLab model.
+
 Conclusions:
 1. One can observe that `semantic-segmentation-adas` model is quite slow.
 2. Road segmentation works well but only with roads :-). It is FAST, by the way. ![Me and road](img/me_and_road.png)
