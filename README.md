@@ -8,7 +8,7 @@ OpenVino docker image and **working** segmentation demo
 **GPU**
 > `make build-gpu`
 
-The installation process build the image of Ubuntu 18.04 with
+The installation process builds the image of Ubuntu 18.04 with
 - OpenCV
 - OpenVino toolkit
 - python3 with TF and PyToch
@@ -20,6 +20,19 @@ The building process also:
   - `road-segmentation-adas-0001` (in OpenVino binary format)
   - `deeplabv3_mnv2_pascal_train_aug` (inf TF format)
 - optimize the `deeplabv3_mnv2_pascal_train_aug` and saves it in OpenVino binary format
+
+# Run segmentation with camera input
+One can start the segmentation demo with laptop's camera as input in few steps
+**Step 1.** Crete and runt the docker container (with camera device support)
+> `make run-shell-with-camera-cpu`
+
+**Step 2.** In the docker container, run the command
+> `home/openvino/omz_demos_build/intel64/Release/segmentation_demo -i 0 -m MODEL_PATH`
+where `MODEL_PATH` is path to XML file of the model.
+In case of FP32 precision, one can choose:
+- `/home/openvino/models/intel/semantic-segmentation-adas-0001/FP32/semantic-segmentation-adas-0001.xml`
+- `/home/openvino/models/intel/road-segmentation-adas-0001/FP32/road-segmentation-adas-0001.xml`
+- `/home/openvino/models/public/deeplabv3-bin/FP32/frozen_inference_graph.xml`
 
 # Run segmentation demo on single [image.jpg](img/image.jpg)
 One can simply run the `segmentation_demo` (from OpenVino deployment tools) in few steps
