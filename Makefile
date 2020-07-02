@@ -20,7 +20,24 @@ run-shell-gpu:
 	docker run --rm \
 		--volume=${PWD}/img:/home/openvino/img \
 		--volume=${PWD}/scripts:/home/openvino/scripts \
+		--runtime=nvidia \
 		-it openvino-gpu
+
+run-shell-with-camera-cpu:
+	docker run --rm \
+		--volume=${PWD}/img:/home/openvino/img \
+		--volume=${PWD}/scripts:/home/openvino/scripts \
+		--privileged -v /dev/video0:/dev/video0 \
+		--network=host --env DISPLAY=${DISPLAY} \
+		-it openvino-cpu		
 		
-#/home/openvino/omz_demos_build/intel64/Release/segmentation_demo -i /home/openvino/img/image.jpg -m /home/openvino/models/intel/${MODEL}/${PREC}/${MODEL}.xml -no_show
+run-shell-with-camera-gpu:
+	docker run --rm \
+		--volume=${PWD}/img:/home/openvino/img \
+		--volume=${PWD}/scripts:/home/openvino/scripts \
+		--runtime=nvidia \
+		--privileged -v /dev/video0:/dev/video0 \
+		--network=host --env DISPLAY=${DISPLAY} \
+		--volume /home/rno/.Xauthority:/root/.Xauthority \
+		-it openvino-gpu
 
