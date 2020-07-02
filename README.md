@@ -14,7 +14,7 @@ The installation process build the image of Ubuntu 18.04 with
 - python3 with TF and PyToch
 
 The building process also:
-- compiles of all OpenVino demos from deployment tools
+- compiles all OpenVino demos (in C++) from deployment tools
 - downloads the following models for segmentation demo:
   - `semantic-segmentation-adas-0001` (in OpenVino binary format)
   - `road-segmentation-adas-0001` (in OpenVino binary format)
