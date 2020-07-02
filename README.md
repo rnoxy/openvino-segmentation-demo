@@ -27,7 +27,7 @@ One can start the segmentation demo with laptop's camera as input in few steps
 > `make run-shell-with-camera-cpu`
 
 **Step 2.** In the docker container, run the command
-> `home/openvino/omz_demos_build/intel64/Release/segmentation_demo -i 0 -m MODEL_PATH`
+> `/home/openvino/omz_demos_build/intel64/Release/segmentation_demo -i 0 -m MODEL_PATH`
 where `MODEL_PATH` is path to XML file of the model.
 In case of FP32 precision, one can choose:
 - `/home/openvino/models/intel/semantic-segmentation-adas-0001/FP32/semantic-segmentation-adas-0001.xml`
