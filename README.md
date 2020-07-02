@@ -21,7 +21,7 @@ The building process also:
   - `deeplabv3_mnv2_pascal_train_aug` (inf TF format)
 - optimize the `deeplabv3_mnv2_pascal_train_aug` and saves it in OpenVino binary format
 
-# Run segmentation with camera input
+# Run segmentation demo with camera input
 One can start the segmentation demo with laptop's camera as input in few steps
 **Step 1.** Crete and runt the docker container (with camera device support)
 > `make run-shell-with-camera-cpu`
@@ -33,6 +33,8 @@ In case of FP32 precision, one can choose:
 - `/home/openvino/models/intel/semantic-segmentation-adas-0001/FP32/semantic-segmentation-adas-0001.xml`
 - `/home/openvino/models/intel/road-segmentation-adas-0001/FP32/road-segmentation-adas-0001.xml`
 - `/home/openvino/models/public/deeplabv3-bin/FP32/frozen_inference_graph.xml`
+
+One can quit the demo by pressing `q`.
 
 # Run segmentation demo on single [image.jpg](img/image.jpg)
 One can simply run the `segmentation_demo` (from OpenVino deployment tools) in few steps
