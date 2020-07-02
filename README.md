@@ -36,6 +36,15 @@ In case of FP32 precision, one can choose:
 
 One can quit the demo by pressing `q`.
 
+# Results (milisecond per frame)
+
+| Model                           | FP16-INT8 | FP16 | FP32 |
+|---------------------------------|-----------|------|------|
+| semantic-segmentation-adas-0001 | 190 ms    | 260 ms | 267 ms |
+| road-segmentation-adas-0001     |   32 ms       |  36.2 ms   |  37.0 ms    |
+| deeplabv3_mnv2_pascal_train_aug |    ---      |  60 ms    | 60 ms  |
+
+
 # Run segmentation demo on single [image.jpg](img/image.jpg)
 One can simply run the `segmentation_demo` (from OpenVino deployment tools) in few steps
 
