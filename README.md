@@ -1,5 +1,12 @@
-# openvino-segmentation-demo
-OpenVino docker image and **working** segmentation demo
+# Openvino segmentation demo working in Docker container (Ubuntu 18.04)
+
+This repo contains my recent story with OpenVino (Intel) librray.
+
+One can find here the Docker configuration working with camera input image.
+
+Everything was working on my laptop Dell XPS 9570 with Ubuntu 20.04.
+
+![Me](img/me-deeplab.png)
 
 # Installation
 **CPU**
@@ -36,7 +43,7 @@ In case of FP32 precision, one can choose:
 
 One can quit the demo by pressing `q`.
 
-# Results (milisecond per frame)
+## Performance results (milisecond per frame, lower is better)
 
 | Model                           | FP16-INT8 | FP16 | FP32 |
 |---------------------------------|-----------|------|------|
@@ -44,6 +51,10 @@ One can quit the demo by pressing `q`.
 | road-segmentation-adas-0001     |   32 ms       |  36.2 ms   |  37.0 ms    |
 | deeplabv3_mnv2_pascal_train_aug |    ---      |  60 ms    | 60 ms  |
 
+Conclusions:
+1. One can observe that `semantic-segmentation-adas` model is quite slow.
+2. Road segmentation works well but only with roads :-). It is FAST, by the way. ![Me and road](img/me_and_road.png)
+3. For human body semantic segmengtation, I would recommend deeplab since it is quite accurate and fast (see the first image and video).
 
 # Run segmentation demo on single [image.jpg](img/image.jpg)
 One can simply run the `segmentation_demo` (from OpenVino deployment tools) in few steps
@@ -54,7 +65,9 @@ One can simply run the `segmentation_demo` (from OpenVino deployment tools) in f
 **Step 2.** In the docker container, run the shell script [run_segmentation_demo_with_single_image.sh](scripts/run_segmentation_demo_with_single_image.sh)
 > `bash scripts/run_segmentation_demo_with_single_image.sh`
 
-## Results
+## Performance and results
+
+Below we give the results obtained by running the script. One can observe the similar performance when runing the segmentation_demo in the mode without camera input and without GTK window.
 ```
 *********************
 Model semantic-segmentation-adas-0001
