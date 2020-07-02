@@ -24,7 +24,7 @@ The building process also:
 # Run segmentation demo on single [image.jpg](img/image.jpg)
 One can simply run the `segmentation_demo` (from OpenVino deployment tools) in few steps
 
-**Step 1.** Start the docker container
+**Step 1.** Create the docker container and run the shell
 > `make run-shell-cpu`
 
 **Step 2.** In the docker container, run the shell script [run_segmentation_demo_with_single_image.sh](scripts/run_segmentation_demo_with_single_image.sh)
