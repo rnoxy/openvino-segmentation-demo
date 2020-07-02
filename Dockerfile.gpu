@@ -65,6 +65,23 @@ RUN if [ -f "${INTEL_OPENVINO_DIR}"/bin/setupvars.sh ]; then \
         printf "\nsource \${INTEL_OPENVINO_DIR}/bin/setupvars.sh\n" >> /root/.bashrc; \
     fi;
 RUN find "${INTEL_OPENVINO_DIR}/" -name "*.*sh" -type f -exec dos2unix {} \;
+
+
+WORKDIR /tmp/opencl
+RUN usermod -aG video openvino
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends apt-utils && \
+    apt-get install -y --no-install-recommends ocl-icd-libopencl1 && \
+    rm -rf /var/lib/apt/lists/* && \
+    curl -L "https://github.com/intel/compute-runtime/releases/download/20.25.17111/intel-gmmlib_20.1.1_amd64.deb" --output "intel-gmmlib_20.1.1_amd64.deb" && \
+    curl -L "https://github.com/intel/compute-runtime/releases/download/20.25.17111/intel-igc-core_1.0.4155_amd64.deb" --output "intel-igc-core_1.0.4155_amd64.deb" && \
+    curl -L "https://github.com/intel/compute-runtime/releases/download/20.25.17111/intel-igc-opencl_1.0.4155_amd64.deb" --output "intel-igc-opencl_1.0.4155_amd64.deb" && \
+    curl -L "https://github.com/intel/compute-runtime/releases/download/20.25.17111/intel-opencl_20.25.17111_amd64.deb" --output "intel-opencl_20.25.17111_amd64.deb" && \
+    curl -L "https://github.com/intel/compute-runtime/releases/download/20.25.17111/intel-ocloc_20.25.17111_amd64.deb" --output "intel-ocloc_20.25.17111_amd64.deb" && \   
+    dpkg -i /tmp/opencl/*.deb && \
+    ldconfig && \
+    rm -rf /tmp/opencl
+
 USER openvino
 WORKDIR ${INTEL_OPENVINO_DIR}
 
